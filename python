@@ -3,7 +3,7 @@ from qiskit_ibm_runtime import QiskitRuntimeService, SamplerV2 as Sampler
 from qiskit_ibm_runtime import QiskitRuntimeService
  
  
-token = '99193676e377604c6396585be6f957dbcaa1b0db7c0d82c56dd08222519f16acb8f3290f97543650201cd5610a028c7c0723edd8433d327af8d6f9e64be5d3de'
+token = 'APIKEY'
  
 print(token)
 QiskitRuntimeService.save_account(
