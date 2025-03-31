@@ -1,0 +1,24 @@
+from qiskit import QuantumCircuit
+from qiskit_ibm_runtime import QiskitRuntimeService, SamplerV2 as Sampler
+from qiskit_ibm_runtime import QiskitRuntimeService
+ 
+ 
+token = '99193676e377604c6396585be6f957dbcaa1b0db7c0d82c56dd08222519f16acb8f3290f97543650201cd5610a028c7c0723edd8433d327af8d6f9e64be5d3de'
+ 
+print(token)
+QiskitRuntimeService.save_account(
+  token=token,
+  channel="ibm_quantum",
+  overwrite=True
+)
+ 
+# Create empty circuit
+example_circuit = QuantumCircuit(2)
+example_circuit.measure_all()
+ 
+service = QiskitRuntimeService()
+backend = service.least_busy(operational=True, simulator=False)
+ 
+sampler = Sampler(backend)
+job = sampler.run([example_circuit])
+print(f"job id: {job.job_id()}")
